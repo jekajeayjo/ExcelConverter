@@ -13,6 +13,7 @@ public class Main {
 //        String str = converter.readFromFile("C:/Users/Eughen.Baldji/IdeaProjects/KOLEA/htmltableconverter/src/main/resources/test.html");
 //        converter.convertHtmlTableToExcel("someName","/home/kob/work/KOLEA/htmlconverter/src/main/resources/report",str);
 //        converter.convertHtmlTableToExcel("someName","C:\\Users\\Eughen.Baldji\\IdeaProjects\\KOLEA\\htmltableconverter\\src\\main\\resources\\test",str);
-         ExcelConverter.readAndexportToExcel(name,pathIn,pathOut);
+//         ExcelConverter.readAndexportToExcel(name,pathIn,pathOut);
+         new ExcelConverter().readAndexportToExcel(name,pathIn,pathOut);
     }
 }

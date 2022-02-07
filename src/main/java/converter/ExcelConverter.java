@@ -18,7 +18,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ExcelConverter {
-    public static String readFromFile(String path) throws IOException {
+    public  String readFromFile(String path) throws IOException {
         String str = "";
 //        try {
 //            File myObj = new File(path);
@@ -52,7 +52,7 @@ public class ExcelConverter {
         return str;
     }
 
-    public  static  void exportToExcel(String name, String pathOut, String str) throws IOException {
+    public    void exportToExcel(String name, String pathOut, String str) throws IOException {
         boolean isPresent = str.indexOf("<table") != -1 ? true : false;
         if (isPresent) {
             List<Element> tables = getContentByTag(str, "table");
@@ -67,13 +67,13 @@ public class ExcelConverter {
 
     }
 
-    public static void readAndexportToExcel(String name, String pathIn, String pathOut) throws IOException {
+    public  void readAndexportToExcel(String name, String pathIn, String pathOut) throws IOException {
         String str = readFromFile(pathIn);
         exportToExcel(name, pathOut, str);
 
     }
 
-    private static ConvertModel fillHead(ConvertModel convertModel, Elements theadElement, Element element) {
+    private  ConvertModel fillHead(ConvertModel convertModel, Elements theadElement, Element element) {
         if (theadElement.size() != 0) {
             Elements trElemnts = theadElement.get(0).getElementsByTag("tr");
             Elements tdElements = trElemnts.get(0).getElementsByTag("td");
@@ -114,7 +114,7 @@ public class ExcelConverter {
         return convertModel;
     }
 
-    private static ConvertModel fillBody(ConvertModel convertModel, List<Element> tbodyElements, Element element) {
+    private  ConvertModel fillBody(ConvertModel convertModel, List<Element> tbodyElements, Element element) {
         if (tbodyElements.size() != 0) {
             for (Element tbodyElement : tbodyElements) {
                 List<Element> trBodyElemnts = tbodyElement.getElementsByTag("tr")
@@ -199,7 +199,7 @@ public class ExcelConverter {
         return convertModel;
     }
 
-    public static HSSFWorkbook fillExcel(List<Element> elements) {
+    public  HSSFWorkbook fillExcel(List<Element> elements) {
 //        elements.remove(1);
 //        HSSFWorkbook workbook = new HSSFWorkbook();
 //        HSSFSheet sheet = workbook.createSheet("Report");
@@ -231,7 +231,7 @@ public class ExcelConverter {
     }
 
     //Посичтать сколько ячеек необходимо взять для заголовка
-    private static Integer checkCellColSpanBody(List<Element> tbodyElements, Integer position) {
+    private  Integer checkCellColSpanBody(List<Element> tbodyElements, Integer position) {
         for (Element tdbodyElement : tbodyElements) {
             List<Element> tdElements = tdbodyElement.getElementsByTag("td")
                     .stream().filter(e -> e.parent().equals(tdbodyElement)).collect(Collectors.<Element>toList());
@@ -246,7 +246,7 @@ public class ExcelConverter {
         return 1;
     }
 
-    private static List<Element> getContentByTag(String strHtml, String tag) throws MalformedURLException {
+    private  List<Element> getContentByTag(String strHtml, String tag) throws MalformedURLException {
         Document doc = Jsoup.parseBodyFragment(strHtml);
         List<Element> elements = doc.select(tag).stream().filter(e -> e.parent().parent().parent()
                 .equals(doc)).collect(Collectors.<Element>toList());
