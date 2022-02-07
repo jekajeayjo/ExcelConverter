@@ -8,10 +8,8 @@
     <artifactId>htmlconverter</artifactId>
     <version>1.0.0</version>
 
-    <properties>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
-    </properties>
+
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
